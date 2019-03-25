@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+	<form method="POST" action="">
+		{{ form.hidden_tag()}}
+		<fieldset class="form-group">
+		<legend class="border-bottom mb-4">Log In</legend>
+	
+		<div class="form-group">
+			{{form.email.label(class="form-control-label")}}
+			{% if form.email.errors%}
+				{{form.email(class="form-control form-control-md is-invalid")}}
+				<div>
+					{% for errors in form.email.errors %}
+					<span>{{errors}}</span>
+					{% endfor %}
+				</div>
+				{% else %}
+				{{form.email(class="form-control form-control-md")}}
+			{% endif %}
+		</div>
+		<div class="form-group">
+			{{form.password.label(class="form-control-label")}}
+			{% if form.password.errors%}
+				{{form.password(class="form-control form-control-md is-invalid")}}
+				<div>
+					{% for errors in form.password.errors %}
+					<span>{{errors}}</span>
+					{% endfor %}
+				</div>
+				{% else %}
+				{{form.password(class="form-control form-control-md")}}
+			{% endif %}
+		</div>
+		
+		</fieldset>
+		<div class="form-group">
+			<!-- {{form.submit.label(class="form-control-label")}} -->
+			{{form.submit(class="btn btn-outline-info")}}
+		</div>
+		<small class="text-muted ml-2">
+			<a href="#">Forgot Password</a>
+			
+		</small>
+		</form>
+	</div>
+		<div class="border-top ">
+			<small class="text-muted">
+				Don't have an Account <a href="{{ url_for('register')}}">Sign Up </a>
+			</small>
+		</div>
+
+{% endblock content %}
